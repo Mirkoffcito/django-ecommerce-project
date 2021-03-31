@@ -1,0 +1,55 @@
+{% extends "../base.html" %} {%load static%} {% block title %} Home {% endblock%} 
+{% block content %}
+<div class="bg-dark text-secondary px-4 py-5 text-center">
+  <div class="py-5">
+    <h1 class="display-5 fw-bold text-white">Tienda en linea</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="fs-5 mb-4">
+        Bienvenido a mi primer tienda en linea!
+      </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button
+          type="button"
+          class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold"
+        >
+          Custom button
+        </button>
+        <button type="button" class="btn btn-outline-light btn-lg px-4">
+          Secondary
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    {% for p in products %}
+      <div class="col">
+        <div class="card shadow-sm">
+          <a href="{{p.get_absolute_url}}" ><img class="img-fluid" alt="Responsive image" src="{{p.image.url}}"></a>
+
+          <div class="card-body">
+            <p class="card-text">
+                <a class="text-dark text-decoration-none" href="{{p.get_absolute_url}}">{{p.title|title}}</a>
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" id="add-button" class="btn btn-sm btn-outline-secondary">
+                  Añadir al carrito
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Ver detalles
+                </button>
+              </div>
+              <small class="text-muted">9 mins</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
